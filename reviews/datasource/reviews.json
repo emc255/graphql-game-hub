@@ -1,0 +1,37 @@
+[
+  {
+    "id": "1",
+    "rating": 8,
+    "content": "Great game, highly recommended!",
+    "userId": "1",
+    "gameId": "2"
+  },
+  {
+    "id": "2",
+    "rating": 7,
+    "content": "Enjoyable experience overall.",
+    "userId": "2",
+    "gameId": "2"
+  },
+  {
+    "id": "3",
+    "rating": 9,
+    "content": "Fantastic gameplay and story!",
+    "userId": "3",
+    "gameId": "2"
+  },
+  {
+    "id": "4",
+    "rating": 6,
+    "content": "Decent game, but could be better.",
+    "userId": "4",
+    "gameId": "4"
+  },
+  {
+    "id": "5",
+    "rating": 10,
+    "content": "GODS",
+    "userId": "1",
+    "gameId": "4"
+  }
+]

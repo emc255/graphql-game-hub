@@ -1,0 +1,25 @@
+{
+  "name": "users",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "compile": "tsc",
+    "copy-graphql": "cp src/*.graphql dist/src",
+    "start": "npm run compile && npm run copy-graphql && node ./dist/src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@apollo/server": "^4.10.0",
+    "@apollo/subgraph": "^2.7.1",
+    "graphql": "^16.8.1",
+    "graphql-tag": "^2.12.6"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.24",
+    "typescript": "^5.3.3"
+  }
+}

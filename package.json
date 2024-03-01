@@ -1,0 +1,26 @@
+{
+  "name": "graphql-game-hub",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "compile-games": "tsc --project ./games/tsconfig.json",
+    "copy-graphql-games": "cp ./games/src/*.graphql ./games/dist/src",
+    "start-games": "npm run compile-games && npm run copy-graphql-games && node ./games/dist/src/index.js",
+    "compile-reviews": "tsc --project ./reviews/tsconfig.json",
+    "copy-graphql-reviews": "cp ./reviews/src/*.graphql ./reviews/dist/src",
+    "start-reviews": "npm run compile-reviews && npm run copy-graphql-reviews && node ./reviews/dist/src/index.js",
+    "compile-users": "tsc --project ./users/tsconfig.json",
+    "copy-graphql-users": "cp ./users/src/*.graphql ./users/dist/src",
+    "start-users": "npm run compile-users && npm run copy-graphql-users && node ./users/dist/src/index.js",
+    "compile-gateway": "tsc --project ./gateway/tsconfig.json",
+    "start-gateway": "sleep 2 && npm run compile-gateway && node ./gateway/dist/index.js",
+    "start": "concurrently \"npm run start-games\" \"npm run start-reviews\" \"npm run start-users\" \"npm run start-gateway\""
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "typescript": "^5.3.3"
+  }
+}
