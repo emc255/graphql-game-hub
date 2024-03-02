@@ -5,8 +5,8 @@ type Review {
   id: ID!
   rating: Int
   content: String
-  game: Game
   user: User
+  game: Game
 }
 
 type User @key(fields: "id") {
@@ -26,5 +26,14 @@ type Query {
 union ReviewPayload = Review | Error
 
 type Mutation {
-  addReview(rating: Int!, content: String!): Review!
+  addReview(
+    rating: Int!
+    content: String!
+    userId: String!
+    gameId: String!
+  ): ReviewPayload!
+}
+
+type Error {
+  message: String!
 }

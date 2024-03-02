@@ -25,4 +25,18 @@ export const resolvers = {
       return dataSources.reviewsAPI.fetchReviews();
     },
   },
+
+  Mutation: {
+    addReview: (
+      _: any,
+      { rating, content, userId, gameId },
+      { dataSources }
+    ) => {
+      return dataSources.reviewsAPI.addReview(rating, content, userId, gameId);
+    },
+  },
+
+  ReviewPayload: {
+    __resolveType: (parent) => (parent.message ? "Error" : "Review"),
+  },
 };
