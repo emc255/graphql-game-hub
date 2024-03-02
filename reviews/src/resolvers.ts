@@ -1,10 +1,4 @@
 export const resolvers = {
-  Query: {
-    reviews: (_: any, __: any, { dataSources }) => {
-      return dataSources.reviewsAPI.fetchReviews();
-    },
-  },
-
   Review: {
     game: ({ gameId }) => {
       return { id: gameId };
@@ -23,6 +17,12 @@ export const resolvers = {
   Game: {
     reviews: ({ id }, __: any, { dataSources }) => {
       return dataSources.reviewsAPI.fetchGameReviews(id);
+    },
+  },
+
+  Query: {
+    reviews: (_: any, __: any, { dataSources }) => {
+      return dataSources.reviewsAPI.fetchReviews();
     },
   },
 };

@@ -1,10 +1,6 @@
 extend schema
   @link(url: "https://specs.apollo.dev/federation/v2.5", import: ["@key"])
 
-type Query {
-  reviews: [Review]
-}
-
 type Review {
   id: ID!
   rating: Int
@@ -21,4 +17,14 @@ type User @key(fields: "id") {
 type Game @key(fields: "id") {
   id: ID!
   reviews: [Review]
+}
+
+type Query {
+  reviews: [Review]
+}
+
+union ReviewPayload = Review | Error
+
+type Mutation {
+  addReview(rating: Int!, content: String!): Review!
 }

@@ -3,17 +3,16 @@ import { startStandaloneServer } from "@apollo/server/standalone";
 import { buildSubgraphSchema } from "@apollo/subgraph";
 import { ApolloServerPluginInlineTraceDisabled } from "@apollo/server/plugin/disabled";
 import gql from "graphql-tag";
-
-import GamesAPI from "../datasource/GamesAPI.js";
-
 import { readFileSync } from "fs";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 
+import GamesAPI from "../datasource/GamesAPI.js";
+import { resolvers } from "./resolvers.js";
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-import { resolvers } from "./resolvers.js";
 const typeDefs = gql(
   readFileSync(__dirname + "/schema.graphql", {
     // Using __dirname to construct the path
