@@ -1,6 +1,7 @@
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
 import { buildSubgraphSchema } from "@apollo/subgraph";
+import { ApolloServerPluginInlineTraceDisabled } from "@apollo/server/plugin/disabled";
 import gql from "graphql-tag";
 
 import GamesAPI from "../datasource/GamesAPI.js";
@@ -22,6 +23,7 @@ const typeDefs = gql(
 
 const server = new ApolloServer({
   schema: buildSubgraphSchema({ typeDefs, resolvers }),
+  plugins: [ApolloServerPluginInlineTraceDisabled()],
 });
 
 const { url } = await startStandaloneServer(server, {
