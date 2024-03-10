@@ -1,5 +1,9 @@
 import { ApolloServer } from "@apollo/server";
-import { ApolloGateway, IntrospectAndCompose } from "@apollo/gateway";
+import {
+  ApolloGateway,
+  IntrospectAndCompose,
+  RemoteGraphQLDataSource,
+} from "@apollo/gateway";
 import { startStandaloneServer } from "@apollo/server/standalone";
 
 const gateway = new ApolloGateway({
@@ -9,13 +13,17 @@ const gateway = new ApolloGateway({
       { name: "reviews", url: "http://localhost:4002" },
       { name: "users", url: "http://localhost:4003" },
     ],
+    introspectionHeaders: {
+      Authorization: "Bearer abc123",
+    },
   }),
 });
 
 const server = new ApolloServer({
   gateway,
-  // NOTE: subscriptions not working in ts
-  // subscriptions: false, // Disable subscriptions (not currently supported with Apollo Gateway)
+  // context: ({ req }) => ({
+  //   authorization: req.headers.authorization,
+  // }),
 });
 
 const { url } = await startStandaloneServer(server, {

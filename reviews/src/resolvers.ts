@@ -21,19 +21,13 @@ export const resolvers = {
   },
 
   Query: {
-    reviews: (_: any, __: any, { dataSources }) => {
-      return dataSources.reviewsAPI.fetchReviews();
-    },
+    reviews: (_: any, __: any, { dataSources }) =>
+      dataSources.reviewsAPI.fetchReviews(),
   },
 
   Mutation: {
-    addReview: (
-      _: any,
-      { rating, content, userId, gameId },
-      { dataSources }
-    ) => {
-      return dataSources.reviewsAPI.addReview(rating, content, userId, gameId);
-    },
+    addReview: (_: any, { rating, content, userId, gameId }, { dataSources }) =>
+      dataSources.reviewsAPI.addReview(rating, content, userId, gameId),
   },
 
   ReviewPayload: {

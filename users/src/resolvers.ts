@@ -6,8 +6,8 @@ export const resolvers = {
   },
 
   Query: {
-    users: (_: any, __: any, { dataSources }) => {
-      return dataSources.usersAPI.fetchUsers();
-    },
+    me: (_: any, __: any, { currentUser }) => currentUser,
+    users: (_: any, __: any, { dataSources }) =>
+      dataSources.usersAPI.fetchUsers(),
   },
 };
